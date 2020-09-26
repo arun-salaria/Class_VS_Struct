@@ -5,7 +5,7 @@ struct PersonStruct {   //No Need to init
     var name:String
     var age:Int
     
-    mutating func upperCaseName(){ // As Struct is value type, updating the value is like making a new copy
+    mutating func upperCaseName(){ // As Struct is value type, updating the value is like making a new copy (immutable values)
         name = name.uppercased()
     }
     
@@ -18,7 +18,7 @@ class PersonClassInit1 { // without init gives error example : 1
         name = _name
         age = _age
     }
-    func upperCaseName(){         // As Class is reference type, updating the value is like updating the onsame reference
+    func upperCaseName(){         // As Class is reference type, updating the value is like updating the onsame reference (mutable object)
         name = name.uppercased()
     }
 }
@@ -62,3 +62,19 @@ print(pClass2Copy.name) // --- Arun_C2_Updated ---
 
 
 
+/*
+ 
+ When to use when Struct vs Class (Values vs Objects)
+ 
+ ----- Struct -----
+ - As a value type if two or more struct can have same value considered as same
+    ex: for Location - if two Location have same lat, long then can be considered as same Location
+ - Fast,many instance, short period - Like calculation for making decisions
+ - Works on stack concept
+ 
+ ---- Class -----
+ - As a Object type if two or more class can have same value can't considered as same
+    for Person - if 2 persons have same name then they can't considered as same Person.
+ - less instance, long period - Like maintaining a browser history for a user session.
+ - Works on heap concept
+ */
