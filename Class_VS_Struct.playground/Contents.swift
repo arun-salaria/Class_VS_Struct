@@ -4,6 +4,11 @@
 struct PersonStruct {   //No Need to init
     var name:String
     var age:Int
+    
+    mutating func upperCaseName(){ // As Struct is value type, updating the value is like making a new copy
+        name = name.uppercased()
+    }
+    
 }
 
 class PersonClassInit1 { // without init gives error example : 1
@@ -13,11 +18,17 @@ class PersonClassInit1 { // without init gives error example : 1
         name = _name
         age = _age
     }
+    func upperCaseName(){         // As Class is reference type, updating the value is like updating the onsame reference
+        name = name.uppercased()
+    }
 }
 
 class PersonClassInit2 { // without init gives error example : 2
     var name:String = "Arun_C2"
     var age:Int = 27
+    func upperCaseName(){
+        name = name.uppercased()
+    }
 }
 
 var pStruct = PersonStruct(name: "Arun_S", age: 25)  //Struct auto completes params required
